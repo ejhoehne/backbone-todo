@@ -17,27 +17,32 @@ var TodoView= Backbone.View.extend({
 	}
 }); 
 
-$('#new-todo').bind('keypress', function(e) {
-	if(event.keyCode== 13){
-		console.log(e.keyCode);
-	 	var TodoList= 
-	 	{
+$('#new-todo').bind('keypress', function(e) 
+{
+	if(event.keyCode== 13)
+	{
+		{
+		console.log(event.keyCode);
+	 	var TodoList=
+	 		{
 	 		model: new Todo({
 	 			title: ''
 	 		}), 
-	 		view: new TodoView({
+	 		view: new TodoView
+	 		({
 	 			el: '.toggle', 
 	 			template: _.template($('#todo-template').html()), 
-				render:function() {
+				render:function() 
+				{
 				this.$el.append(this.template($('.todos-list').html)); 
 	 			}
 	 		})
+ 		
+ 			}
+ 		}
  	
- 	}
- 	
- } 
-
-
-});
-
+	TodoList.render(); 
+	}
+	
+}); 
 }); 
