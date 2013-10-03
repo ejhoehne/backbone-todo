@@ -24,7 +24,7 @@ $("#new-todo").bind('keypress', function(e) {
 			title: $('#new-todo').val()
 		}); 
 	var TodoListView= new TodoView({
-			model: TodoList	
+			model: TodoList
 		}); 
 	TodoListView.render(); 	
 }); 
