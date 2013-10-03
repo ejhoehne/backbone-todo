@@ -1,5 +1,4 @@
 $(document).ready(function() {
-
 var Todo= Backbone.Model.extend({
 	defaults: {
 		title: '', 
@@ -10,39 +9,23 @@ var Todo= Backbone.Model.extend({
 var TodoView= Backbone.View.extend({
 	tagName: 'li',
 	className: 'todo',
-	el: '.toggle', 
 	template: _.template($('#todo-template').html()), 
 	render:function() {
-		this.$el.append(this.template(this.model.toJSON())); 
+		this.$el.html(this.template(this.model.toJSON())); 
+		$('.todos-list').append(this.$el); 
 	}
 }); 
 
-$('#new-todo').bind('keypress', function(e) 
-{
-	if(event.keyCode== 13)
-	{
-		{
-		console.log(event.keyCode);
-	 	var TodoList=
-	 		{
-	 		model: new Todo({
-	 			title: ''
-	 		}), 
-	 		view: new TodoView
-	 		({
-	 			el: '.toggle', 
-	 			template: _.template($('#todo-template').html()), 
-				render:function() 
-				{
-				this.$el.append(this.template($('.todos-list').html)); 
-	 			}
-	 		})
- 		
- 			}
- 		}
- 	
-	TodoList.render(); 
-	}
-	
+$("#new-todo").bind('keypress', function(e) {
+	var keycode = (e.keyCode ? e.keyCode : e.which);
+ 	if (keycode != 13) return true; 
+
+	var TodoList= new Todo({
+			title: $('#new-todo').val()
+		}); 
+	var TodoListView= new TodoView({
+			model: TodoList	
+		}); 
+	TodoListView.render(); 	
 }); 
 }); 

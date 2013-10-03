@@ -13,7 +13,7 @@
 				<input id="new-todo" placeholder="What needs to be done?" />
 				<img src='http://cl.ly/image/18210f180R3u/Screen%20Shot%202013-09-30%20at%2010.13.48%20PM.png' />
 			</div>
-			<ul class="todos-list"></div>
+			<ul class="todos-list"></ul>
 		</div>
 	</div>
 
@@ -23,7 +23,7 @@
 	<script type="text/javascript" src='script.js'></script>
 	<script type="text/template" id="todo-template">
   		<input type='checkbox' class='toggle' <% if(completed) { %>checked<%}%> />
-  		<label><%= title %></label>
+  		<label><% if (completed) { %>class= 'checked' checked <%}%> <%= title %></label>
   		<button class="destroy"></button>
 	</script>
 </body>
